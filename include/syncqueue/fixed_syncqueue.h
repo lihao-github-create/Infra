@@ -33,7 +33,7 @@ class FixedSyncQueue {
 
   // 从队列中取出元素，如果超时，返回false
   bool Pop(T& value, std::chrono::milliseconds timeout =
-                         std::chrono::milliseconds(1000u)) {
+                         std::chrono::milliseconds(100u)) {
     std::unique_lock<std::mutex> lock(mutex_);
     if (condition_pop_.wait_for(lock, timeout,
                                 [this] { return !queue_.empty(); })) {

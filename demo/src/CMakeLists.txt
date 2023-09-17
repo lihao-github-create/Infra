@@ -1,1 +1,3 @@
 add_subdirectory(syncqueue)
+add_subdirectory(pipeline)
+add_subdirectory(singleton)

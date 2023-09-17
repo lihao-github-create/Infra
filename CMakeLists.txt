@@ -17,17 +17,21 @@ endif()
 set(CMAKE_C_COMPILER /usr/bin/clang)
 set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 
+# 设置全局的编译标志，将警告视为错误
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+
 # 设置Debug和Release构建类型的编译选项
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     # Debug 构建类型的编译选项
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -Wall")
 else()
     # Release 构建类型的编译选项
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -DNDEBUG")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -DNDEBUG -Wall")
     # 设置目标架构为x86_64
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=x86-64")
     # # 设置目标架构为aarch64
     # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=armv8-a")
+
 endif()
 
 message("CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
